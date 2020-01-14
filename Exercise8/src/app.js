@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { NameSurname } from "./components/namesurname";
-import { InputGroup, FormControl, Button } from "react-bootstrap";
+import { InputGroup, FormControl } from "react-bootstrap";
 
 export class App extends Component {
     constructor(props) {
@@ -8,14 +8,13 @@ export class App extends Component {
         this.state = {
             name: "",
             surname: "",
-            count: 0,
-            isVisible: true
+            count: 0
         }
     }
 
     render() {
         return (<div style={{ marginBottom: "70px" }}>
-            Hello {(this.state.isVisible?<NameSurname Name={this.state.name} Surname={this.state.surname} itemCount={this.state.count} />:null)}
+            Hello <NameSurname Name={this.state.name} Surname={this.state.surname} itemCount={this.state.count} />
 
             <div style={{ padding: 10 }}>
                 <InputGroup>
@@ -50,11 +49,6 @@ export class App extends Component {
                         }
                     />
                 </InputGroup>
-            </div>
-            <div>
-                <Button onClick={() => {
-                    this.setState({ isVisible: !this.state.isVisible });
-                }} >Toggle isVisible</Button>
             </div>
         </div>
         );

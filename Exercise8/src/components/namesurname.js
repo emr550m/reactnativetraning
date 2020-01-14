@@ -7,6 +7,7 @@ export class NameSurname extends React.Component {
     render() {
         return <Button variant="primary">
             {this.props.Name} {this.props.Surname} <Badge variant="light">{this.props.itemCount}</Badge>
+            <span className="sr-only">unread messages</span>
         </Button>
     }
 }
