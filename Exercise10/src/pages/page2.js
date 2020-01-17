@@ -1,6 +1,7 @@
 
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import {NameSurname} from "../components/namesurname";
 import { withRouter,useHistory  } from "react-router";
 import { InputGroup, FormControl, Button } from "react-bootstrap";
 
@@ -12,6 +13,7 @@ export function Page2() {
                 history.push("page1");
             }
         }>GotoPage 1</Button>
+        <NameSurname Name="Emrah" Surname="Öz" />
     </div>)
 }
 
