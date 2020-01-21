@@ -5,15 +5,20 @@ import {
     Text,
     StatusBar,
     Switch,
+    ShadowPropTypesIOS,
+    Image
 } from 'react-native';
 
-export function ListItem() {
+export function ListItem(props) {
 
-   
+
 
     return (
         <View style={styles.listArea}>
-            <Text>List Item</Text>
+            <Text>{props.title}</Text>
+            <Image source={{uri: props.image}} style={{height:100}} />
+            <Text>{props.description}</Text>
+            <View style={{backgroundColor:'gray',height:1,marginTop:5}}></View>
         </View>)
 }
 
@@ -24,7 +29,7 @@ const styles = StyleSheet.create({
         alignContent: 'center',
         justifyContent: 'flex-start',
         flex: 1,
-        marginTop: 50,
+        marginTop: 5,
         flexDirection: 'column',
         padding: 10
     },
