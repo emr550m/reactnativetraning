@@ -10,6 +10,7 @@ function validateEmail(email) {
 }
 
 app.post('/login', (req, res) => {
+    console.log("Request Received:" + req);
     var { username, password } = req.body;
     var result = {
         success: true,

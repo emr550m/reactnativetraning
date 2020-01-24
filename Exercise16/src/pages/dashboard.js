@@ -2,7 +2,7 @@ import React from 'react'
 import { View, Text, Button } from 'react-native'
 import { withNavigation } from 'react-navigation';
 
-export function Profile(props) {
+export function Dashboard(props) {
     return (<View><Text>Profile</Text>
         <Button onPress={() => {
             props.navigation.goBack();
@@ -10,4 +10,4 @@ export function Profile(props) {
     </View>)
 }
 
-export default withNavigation(Profile);
+export default withNavigation(Dashboard);

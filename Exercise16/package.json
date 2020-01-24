@@ -1,5 +1,5 @@
 {
-  "name": "Exercise14",
+  "name": "Exercise16",
   "version": "0.0.1",
   "private": true,
   "scripts": {
@@ -10,15 +10,15 @@
     "lint": "eslint ."
   },
   "dependencies": {
-    "@react-navigation/native": "^5.0.0-alpha.28",
-    "@react-navigation/native-stack": "^5.0.0-alpha.28",
+    "@react-native-community/masked-view": "^0.1.6",
     "react": "16.9.0",
     "react-native": "0.61.5",
     "react-native-gesture-handler": "^1.5.3",
     "react-native-reanimated": "^1.7.0",
     "react-native-safe-area-context": "^0.6.2",
-    "react-native-screens": "^2.0.0-alpha.29",
-    "react-navigation": "^4.0.10"
+    "react-native-screens": "^2.0.0-alpha.27",
+    "react-navigation": "^4.0.10",
+    "react-navigation-stack": "^2.0.15"
   },
   "devDependencies": {
     "@babel/core": "^7.6.2",
