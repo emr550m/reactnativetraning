@@ -1,18 +1,8 @@
-import {createAppContainer} from 'react-navigation';
-import {createStackNavigator} from 'react-navigation-stack';
+import 'react-native-gesture-handler';
+import React from 'react';
+import { enableScreens } from 'react-native-screens';
 
-import Login from './src/pages/login';
-import  Dashboard  from './src/pages/dashboard';
+enableScreens();
 
-const MainNavigator = createStackNavigator({
-  Login: {screen: Login ,   navigationOptions: ({ navigation }) => ({
-    title: 'Login Screen',
-  }),},
-  Dashboard: {screen: Dashboard , navigationOptions: ({ navigation }) => ({
-    title: 'Dashboard Screen',
-  }),},
-});
-
-const App = createAppContainer(MainNavigator);
-
+import App from './src/app' 
 export default App;
