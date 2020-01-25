@@ -22,7 +22,7 @@ export function Demo() {
     if (Platform.OS == "android") {
         backendURL = 'http://10.0.3.2:8080/getItems/'
     }
- 
+
     const [switchValue, setSwitchValue] = useState(true);
     const [barvalue, setBarValue] = useState(0.1);
     const [listValue, setListValue] = useState(false);
@@ -35,10 +35,10 @@ export function Demo() {
     }]);
 
     const onRefresh = React.useCallback(() => {
-
-        setRefreshing(true); 
+        setBarValue(0.1);
+        setRefreshing(true);
         setTimeout(() => {
-            setBarValue(barvalue+0.6); 
+            setBarValue(barvalue + 0.2);
         }, 500);
 
         fetch(backendURL, {
@@ -53,13 +53,14 @@ export function Demo() {
         }).then((r) => {
             return r.json();
         }).then((rsp) => {
-            setRefreshing(false) 
+            setBarValue(1);
+            setRefreshing(false)
             if (rsp.success) {
                 setItems(rsp.list)
             }
         }).catch((e) => {
             setRefreshing(false)
-            alert("error" + e) 
+            alert("error" + e)
         });
     }, [refreshing]);
 
