@@ -15,28 +15,24 @@ import {
     TouchableOpacity
 } from 'react-native'
 import { withNavigation } from 'react-navigation';
-
+import { useSelector, useDispatch } from 'react-redux';
 import { ListItem } from '../components/listitem';
 import { Reading } from '../components/reading';
+import { useLoginCheck } from '../hooks/session';
 
 export function Dashboard(props) {
-    const {goBack} = props.navigation;
-
+    const { goBack } = props.navigation;
+    const dashboardState = useSelector(state => state.dashboard);
+    const dispatch = useDispatch()
     var backendURL = 'http://localhost:8080/getItems/'
     if (Platform.OS == "android") {
         backendURL = 'http://10.0.3.2:8080/getItems/'
     }
-
+    const session = useLoginCheck();
     const [switchValue, setSwitchValue] = useState(true);
     const [barvalue, setBarValue] = useState(0.1);
     const [listValue, setListValue] = useState(false);
     const [refreshing, setRefreshing] = React.useState(false);
-    const [items, setItems] = React.useState([{
-        key: 1,
-        image: 'http://tapsmart.wpengine.netdna-cdn.com/wp-content/uploads/2015/06/pull-to-refresh.png',
-        title: "Pull To get List",
-        description: "Please pull to get items."
-    }]);
 
     const onRefresh = React.useCallback(() => {
 
@@ -59,7 +55,8 @@ export function Dashboard(props) {
         }).then((rsp) => {
             setRefreshing(false)
             if (rsp.success) {
-                setItems(rsp.list)
+
+                dispatch({ type: 'SET_ITEMS', items: rsp.list })
             }
         }).catch((e) => {
             setRefreshing(false)
@@ -78,7 +75,7 @@ export function Dashboard(props) {
         </View> : null)}
         <View style={styles.enableArea}>
             <TouchableOpacity style={styles.logoutButton} onPress={() => {
-                goBack();
+                dispatch({ type: 'SET_LOGGEDIN', isLoggedIn: false });
             }}><Text style={{ color: 'white', height: 40 }}>Log out</Text></TouchableOpacity>
             <TouchableOpacity style={styles.forgotButton}><Text style={{ color: 'black' }}>Forgot password?</Text></TouchableOpacity>
             <Text>Show List Area</Text>
@@ -90,7 +87,7 @@ export function Dashboard(props) {
                 : null)}
             <FlatList refreshControl={
                 <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />}
-                data={items}
+                data={dashboardState.items}
                 renderItem={({ item }) => <ListItem key={item.key} title={item.title} image={item.image} description={item.description} />}
             />
         </View> : null)}
@@ -120,7 +117,7 @@ const styles = StyleSheet.create({
         flex: 1,
         marginTop: 5,
         flexDirection: 'column',
-        padding: 10 
+        padding: 10
     },
     logoutButton: {
         height: 50,
@@ -132,9 +129,9 @@ const styles = StyleSheet.create({
         alignItems: "center",
         justifyContent: 'center',
     },
-    safeView:{
+    safeView: {
         flex: 1,
-        backgroundColor:'white'
+        backgroundColor: 'white'
     }
 });
 

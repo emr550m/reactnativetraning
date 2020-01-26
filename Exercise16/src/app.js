@@ -20,14 +20,14 @@ function MyStack() {
             }}
         >
             <Stack.Screen
-                name="Login"
+                name="login"
                 component={Login}
                 options={{
                     title: 'Login',
                 }}
             />
             <Stack.Screen
-                name="Dashboard"
+                name="dashboard"
                 component={Dashboard}
                 options={{
                     title: 'Dashboard Page',

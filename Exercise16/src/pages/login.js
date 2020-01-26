@@ -5,16 +5,19 @@ import {
     View,
     Text,
     TextInput,
-    TouchableOpacity
+    TouchableOpacity,
+    Platform
 } from 'react-native';
 import { useSelector , useDispatch} from 'react-redux';
 
 import { Logo } from '../components/logo'
 import { withNavigation } from 'react-navigation';
 
-export function Login(props) {
-    const [username, setUsername] = useState("");
-    const [password, setPassword] = useState("");
+export function Login(props) {  
+    var backendURL = 'http://localhost:8080/login/';
+    if(Platform.OS=="android"){
+        backendURL = 'http://10.0.3.2:8080/login/';
+    }
     const { navigate } = props.navigation;
     const loginState = useSelector(state => state.login);
     const dispatch = useDispatch()
@@ -22,7 +25,7 @@ export function Login(props) {
     login = () => {
         if (loginState.username != "") {
             if ( loginState.password != "") {
-                fetch('http://localhost:8080/login/', {
+                fetch(backendURL, {
                     method: 'POST',
                     headers: {
                         Accept: 'application/json',
@@ -34,21 +37,25 @@ export function Login(props) {
                     }),
                 }).then((r) => {
                     return r.json();
-                }).then((rsp) => {
-                    console.log(rsp)
+                }).then((rsp) => { 
                     if (rsp.success) {
-                        navigate("Dashboard");
+                        dispatch({ type:'SET_LOGGEDIN', isLoggedIn: true });
+                        navigate("dashboard");
                     } else {
                         alert(rsp.message);
+                        dispatch({ type:'SET_LOGGEDIN', isLoggedIn: false });
                     }
                 }).catch((e) => {
                     alert("Login Failure");
+                    dispatch({ type:'SET_LOGGEDIN', isLoggedIn: false });
                 });
             } else {
                 alert("Please enter password.");
+                dispatch({ type:'SET_LOGGEDIN', isLoggedIn: false });
             }
         } else {
             alert("Please provide email.");
+            dispatch({ type:'SET_LOGGEDIN', isLoggedIn: false });
         }
     }
 
@@ -56,7 +63,7 @@ export function Login(props) {
         <View style={styles.logoArea}><Logo /></View>
         <View style={styles.inputArea}>
             <TextInput autoCapitalize="none" value={loginState.username} onChangeText={(text) => { dispatch({ type:'SET_USERNAME', username: text }); }} placeholder="Email" style={styles.usernameField} />
-            <TextInput autoCapitalize="none" value={loginState.password} onChangeText={(text) => { setPassword(text); }} placeholder="Password" secureTextEntry={true} style={styles.passwordField} />
+            <TextInput autoCapitalize="none" value={loginState.password} onChangeText={(text) => { dispatch({ type:'SET_PASSWORD', password: text });  }} placeholder="Password" secureTextEntry={true} style={styles.passwordField} />
             <TouchableOpacity onPress={() => {
                 login();
             }} style={styles.loginButton}><Text style={{ color: 'white' }}>Log in</Text></TouchableOpacity>
@@ -65,7 +72,9 @@ export function Login(props) {
         <View style={styles.footerArea}>
             <TouchableOpacity style={styles.forgotButton}><Text style={{ color: 'black' }}>Legal</Text></TouchableOpacity>
             <View style={styles.footerButtonArea}>
-                <TouchableOpacity style={styles.footerButton}><Text style={{ color: 'white' }}>Get started</Text></TouchableOpacity>
+                <TouchableOpacity onPress={()=>{
+                    navigate("dashboard")
+                }} style={styles.footerButton}><Text style={{ color: 'white' }}>Get started</Text></TouchableOpacity>
                 <View style={{ width: 1 }}></View>
                 <TouchableOpacity style={styles.footerButton}><Text style={{ color: 'white' }}>Learn More</Text></TouchableOpacity>
             </View>
