@@ -1,17 +1,15 @@
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var CopyPlugin = require('copy-webpack-plugin');
 var path = require('path');
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
 module.exports = {
-    entry: './src/index-hot.js',
+    entry: './src/index.js',
     output: {
         filename: 'bundle.js',
         path: __dirname + '/dist'
-    },
-    resolve:{
-        alias: { 'react-dom': '@hot-loader/react-dom'  },
-    },
-    devtool: "source-map",
+    }, 
+    mode: 'production',
     module: {
         rules: [
             {
@@ -42,5 +40,13 @@ module.exports = {
     plugins: [new HtmlWebpackPlugin({
         template: __dirname + "/src/asset/index.html",
     })
-    ]
+    ],
+    performance: {
+        hints: process.env.NODE_ENV === 'production' ? "warning" : false
+      },
+    optimization: {
+        minimizer: [new UglifyJsPlugin({
+            extractComments: 'all',
+        })],
+      }
 };
