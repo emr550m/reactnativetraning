@@ -75,7 +75,7 @@ app.post('/getItems', (req, res) => {
     }
     setTimeout(() => {
         result.success = true;
-        result.message = "Email and password cannot be empty";
+        result.message = "";
         res.json(result);
     }, 3000);
 });
