@@ -1,0 +1,164 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`HeaderContainer -> ./src/modules/headercontainer  should match snapshot 1`] = `
+<View
+  style={
+    Object {
+      "alignContent": "center",
+      "flex": 1,
+      "flexDirection": "row",
+      "justifyContent": "center",
+      "marginTop": 20,
+    }
+  }
+>
+  <View
+    style={
+      Object {
+        "flex": 1,
+        "paddingLeft": 20,
+      }
+    }
+  >
+    <View
+      accessible={true}
+      focusable={false}
+      isTVSelectable={true}
+      onClick={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        Object {
+          "opacity": 1,
+        }
+      }
+    >
+      <Image
+        source={
+          Object {
+            "testUri": "../../../asset/ok.png",
+          }
+        }
+        style={
+          Object {
+            "height": 30,
+            "width": 30,
+          }
+        }
+      />
+    </View>
+  </View>
+  <View
+    style={
+      Object {
+        "alignContent": "flex-end",
+        "flex": 5,
+        "flexDirection": "row",
+        "justifyContent": "flex-end",
+        "marginRight": 40,
+      }
+    }
+  >
+    <View
+      accessible={true}
+      focusable={false}
+      isTVSelectable={true}
+      onClick={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        Object {
+          "opacity": 1,
+        }
+      }
+    >
+      <Image
+        source={
+          Object {
+            "testUri": "../../../asset/hearth.png",
+          }
+        }
+        style={
+          Object {
+            "height": 30,
+            "marginLeft": 20,
+            "width": 30,
+          }
+        }
+      />
+    </View>
+    <View
+      accessible={true}
+      focusable={false}
+      isTVSelectable={true}
+      onClick={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        Object {
+          "opacity": 1,
+        }
+      }
+    >
+      <Image
+        source={
+          Object {
+            "testUri": "../../../asset/upload.png",
+          }
+        }
+        style={
+          Object {
+            "height": 30,
+            "marginLeft": 20,
+            "width": 30,
+          }
+        }
+      />
+    </View>
+    <View
+      accessible={true}
+      focusable={false}
+      isTVSelectable={true}
+      onClick={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        Object {
+          "opacity": 1,
+        }
+      }
+    >
+      <Image
+        source={
+          Object {
+            "testUri": "../../../asset/user.png",
+          }
+        }
+        style={
+          Object {
+            "height": 30,
+            "marginLeft": 20,
+            "width": 30,
+          }
+        }
+      />
+    </View>
+  </View>
+</View>
+`;

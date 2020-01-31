@@ -1,0 +1,85 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`BottomButtons -> ./src/modules/bottombuttons  should match snapshot 1`] = `
+<View
+  style={
+    Object {
+      "alignItems": "stretch",
+      "flex": 1,
+      "flexDirection": "row",
+      "marginBottom": 50,
+    }
+  }
+>
+  <View
+    style={
+      Object {
+        "flex": 1,
+        "margin": 20,
+        "marginTop": 50,
+      }
+    }
+  >
+    <View
+      accessible={true}
+      focusable={false}
+      isTVSelectable={true}
+      onClick={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        Object {
+          "opacity": 1,
+        }
+      }
+    >
+      <View
+        style={
+          Object {
+            "alignContent": "center",
+            "alignItems": "center",
+            "backgroundColor": "white",
+            "borderWidth": 1,
+            "flexDirection": "row",
+            "height": 50,
+            "justifyContent": "center",
+          }
+        }
+      >
+        <Image
+          source={
+            Object {
+              "testUri": "../../../asset/arrow.png",
+            }
+          }
+          style={
+            Object {
+              "height": 20,
+              "marginRight": 5,
+              "width": 20,
+            }
+          }
+        />
+        <Text
+          style={
+            Object {
+              "color": "black",
+              "fontFamily": "Arial",
+              "fontSize": 25,
+              "fontWeight": "400",
+              "textAlign": "center",
+              "textAlignVertical": "center",
+            }
+          }
+        >
+          Start
+        </Text>
+      </View>
+    </View>
+  </View>
+</View>
+`;
